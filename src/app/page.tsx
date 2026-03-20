@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { 
   Github, 
   Mail, 
@@ -17,13 +17,28 @@ import {
   Phone,
   GraduationCap,
   Globe,
-  Users
+  Users,
+  X,
+  Copy,
+  ChevronRight
 } from "lucide-react";
 
 export default function Portfolio() {
+  const [showContact, setShowContact] = useState(false);
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    // Simple visual feedback could be added here
+  };
+
   return (
-    <main className="min-h-screen max-w-4xl mx-auto px-6 py-20 selection:bg-neutral-800">
+    <main className="min-h-screen max-w-4xl mx-auto px-6 py-20 selection:bg-neutral-800 relative">
       
+      {/* Name Header */}
+      <header className="mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
+        <h2 className="text-xl font-bold tracking-tighter text-white uppercase opacity-80">Mbonge Redeem</h2>
+      </header>
+
       {/* Hero Section */}
       <section className="mb-24 animate-in fade-in slide-in-from-bottom-4 duration-1000">
         <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -38,7 +53,7 @@ export default function Portfolio() {
         </div>
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white leading-tight">
-          Backend Engineer | <span className="text-neutral-500">Infrastructure & APIs</span>
+          Backend Developer | <span className="text-neutral-500">Infrastructure & APIs</span>
         </h1>
         <p className="text-lg text-secondary mb-10 max-w-2xl leading-relaxed">
           Building scalable, backend systems, decoupling architectures, and streamlining deployments. 
@@ -54,23 +69,63 @@ export default function Portfolio() {
             <Github size={18} />
             <span>View GitHub</span>
           </a>
-          <a 
-            href="mailto:redeemmbonge792@gmail.com" 
+          <button 
+            onClick={() => setShowContact(true)}
             className="inline-flex items-center gap-2 border border-border px-6 py-2.5 rounded-lg font-medium hover:bg-neutral-900 transition-all duration-300 text-secondary hover:text-white"
           >
             <Mail size={18} />
             <span>Connect</span>
-          </a>
-          <div className="flex items-center gap-4 ml-2 text-neutral-500 text-sm font-mono">
-            <div className="flex items-center gap-2">
-              <Phone size={14} />
-              <span>+263 71 937 2985</span>
-            </div>
-          </div>
+          </button>
         </div>
       </section>
 
-      {/* Education Section */}
+      {/* Contact Modal/Overlay */}
+      {showContact && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="bg-neutral-900 border border-border w-full max-w-md p-8 rounded-2xl shadow-2xl relative animate-in zoom-in-95 duration-300">
+            <button 
+              onClick={() => setShowContact(false)}
+              className="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors"
+            >
+              <X size={20} />
+            </button>
+            <h2 className="text-2xl font-bold text-white mb-6">Contact Details</h2>
+            <div className="space-y-6">
+              <div className="flex flex-col gap-2">
+                <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">Email</span>
+                <div className="flex items-center justify-between bg-black/40 border border-border p-3 rounded-lg group">
+                  <span className="text-sm text-neutral-200 font-mono">redeemmbonge792@gmail.com</span>
+                  <button onClick={() => copyToClipboard('redeemmbonge792@gmail.com')} className="text-neutral-600 hover:text-white transition-colors">
+                    <Copy size={16} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">Phone</span>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between bg-black/40 border border-border p-3 rounded-lg">
+                    <span className="text-sm text-neutral-200 font-mono">+263 71 937 2985</span>
+                    <button onClick={() => copyToClipboard('+263 71 937 2985')} className="text-neutral-600 hover:text-white transition-colors">
+                      <Copy size={16} />
+                    </button>
+                  </div>
+                  <div className="flex items-center justify-between bg-black/40 border border-border p-3 rounded-lg">
+                    <span className="text-sm text-neutral-200 font-mono">+263 78 197 2985</span>
+                    <button onClick={() => copyToClipboard('+263 78 197 2985')} className="text-neutral-600 hover:text-white transition-colors">
+                      <Copy size={16} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="mt-8 text-xs text-neutral-500 font-mono text-center">
+              Available for relocation and remote work.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Education Section (Ascending Order) */}
       <section className="mb-24">
         <div className="flex items-center gap-3 mb-10">
           <GraduationCap size={21} className="text-neutral-400" />
@@ -78,38 +133,46 @@ export default function Portfolio() {
         </div>
 
         <div className="space-y-10">
-          {/* NUST Degree */}
+          {/* Mpopoma High */}
           <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
             <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
-            <div className="flex justify-between items-start mb-1">
-              <h3 className="text-lg font-medium text-white underline decoration-neutral-700 underline-offset-4">Bachelor of Science Honor's Degree in Informatics and Analytics</h3>
-              <span className="text-xs font-mono text-neutral-500">2023 — Present</span>
+            <div className="flex justify-between items-start mb-1 gap-4">
+              <h3 className="text-lg font-medium text-white flex items-center gap-2">
+                Mpopoma High School
+              </h3>
+              <span className="text-xs font-mono text-neutral-500 whitespace-nowrap pt-1.5">2017 — 2020</span>
             </div>
-            <p className="text-secondary text-sm">National University of Science and Technology (NUST)</p>
+            <p className="text-secondary text-sm">O Level</p>
+          </div>
+
+          {/* Gifford High */}
+          <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
+            <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
+            <div className="flex justify-between items-start mb-1 gap-4">
+              <h3 className="text-lg font-medium text-white">Gifford High School</h3>
+              <span className="text-xs font-mono text-neutral-500 whitespace-nowrap pt-1.5">2021 — 2022</span>
+            </div>
+            <p className="text-secondary text-sm">A Level</p>
           </div>
 
           {/* NUST CCE */}
           <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
             <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
-            <div className="flex justify-between items-start mb-1">
-              <h3 className="text-lg font-medium text-white">Computer System Support & Digital Skills</h3>
-              <span className="text-xs font-mono text-neutral-500">Jan 2023 — July 2023</span>
+            <div className="flex justify-between items-start mb-1 gap-4">
+              <h3 className="text-lg font-medium text-white">NUST CCE</h3>
+              <span className="text-xs font-mono text-neutral-500 whitespace-nowrap pt-1.5">Jan 2023 — July 2023</span>
             </div>
-            <p className="text-secondary text-sm">NUST CCE | Digital Skills Licence</p>
+            <p className="text-secondary text-sm">Computer System Support & Digital Skills Licence</p>
           </div>
 
-          {/* High Schools */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
-              <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
-              <h3 className="text-white font-medium">Gifford High School</h3>
-              <p className="text-secondary text-sm">A Level | 2021 — 2022</p>
+          {/* NUST Degree */}
+          <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
+            <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
+            <div className="flex justify-between items-start mb-1 gap-4">
+              <h3 className="text-lg font-medium text-white underline decoration-neutral-700 underline-offset-4">Bachelor of Science Honor's Degree in Informatics and Analytics</h3>
+              <span className="text-xs font-mono text-neutral-500 whitespace-nowrap pt-1.5 uppercase tracking-wider">Present</span>
             </div>
-            <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
-              <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
-              <h3 className="text-white font-medium">Mpopoma High School</h3>
-              <p className="text-secondary text-sm">O Level | 2017 — 2020</p>
-            </div>
+            <p className="text-secondary text-sm">National University of Science and Technology (NUST)</p>
           </div>
         </div>
       </section>
@@ -134,16 +197,16 @@ export default function Portfolio() {
               </span>
             </div>
             <ul className="space-y-3 text-secondary leading-relaxed">
-              <li className="flex gap-3 hover:text-neutral-300 transition-colors">
-                <CheckCircle2 size={16} className="mt-1 flex-shrink-0 text-neutral-600" />
+              <li className="flex gap-3 hover:text-neutral-300 transition-colors group/item">
+                <CheckCircle2 size={16} className="mt-1 flex-shrink-0 text-neutral-600 group-hover/item:text-emerald-500 transition-colors" />
                 <span>Developed and maintained highly available RESTful APIs using Spring Boot and Java.</span>
               </li>
-              <li className="flex gap-3 hover:text-neutral-300 transition-colors">
-                <CheckCircle2 size={16} className="mt-1 flex-shrink-0 text-neutral-600" />
+              <li className="flex gap-3 hover:text-neutral-300 transition-colors group/item">
+                <CheckCircle2 size={16} className="mt-1 flex-shrink-0 text-neutral-600 group-hover/item:text-emerald-500 transition-colors" />
                 <span>Streamlined deployment pipelines using GitLab CI and implemented GitOps deployment strategies with ArgoCD.</span>
               </li>
-              <li className="flex gap-3 hover:text-neutral-300 transition-colors">
-                <CheckCircle2 size={16} className="mt-1 flex-shrink-0 text-neutral-600" />
+              <li className="flex gap-3 hover:text-neutral-300 transition-colors group/item">
+                <CheckCircle2 size={16} className="mt-1 flex-shrink-0 text-neutral-600 group-hover/item:text-emerald-500 transition-colors" />
                 <span>Authored comprehensive automated API test suites using Postman to ensure contract reliability.</span>
               </li>
             </ul>
@@ -166,7 +229,7 @@ export default function Portfolio() {
               </div>
               <ExternalLink size={18} className="text-neutral-600 group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-lg font-medium mb-2 text-white">Smart Greenhouse IoT Gateway</h3>
+            <h3 className="text-lg font-medium mb-2 text-white group-hover:underline underline-offset-4 decoration-neutral-800">Smart Greenhouse IoT Gateway</h3>
             <p className="text-secondary text-sm mb-6 leading-relaxed">
               A decoupled, event-driven REST API built with Spring Boot and PostgreSQL to process high-volume sensor telemetry.
             </p>
@@ -186,7 +249,7 @@ export default function Portfolio() {
               </div>
               <Github size={18} className="text-neutral-600 group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-lg font-medium mb-2 text-white">Production-Ready GitOps Boilerplate</h3>
+            <h3 className="text-lg font-medium mb-2 text-white group-hover:underline underline-offset-4 decoration-neutral-800">Production-Ready GitOps Boilerplate</h3>
             <p className="text-secondary text-sm mb-6 leading-relaxed">
               Open-source Spring Boot template configured with Dockerfiles, GitLab CI pipelines, and ArgoCD manifests for immediate deployment.
             </p>
@@ -204,7 +267,6 @@ export default function Portfolio() {
       {/* Skills & Languages */}
       <section className="mb-24">
         <div className="grid md:grid-cols-4 gap-12">
-          {/* Skills Grid - Spans 3 columns */}
           <div className="md:col-span-3">
             <div className="flex items-center gap-3 mb-10">
               <Code2 size={21} className="text-neutral-400" />
@@ -216,10 +278,10 @@ export default function Portfolio() {
                   <FileCode size={16} className="text-emerald-500" />
                   Backend & Foundations
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-3 font-mono">
                   {['Java', 'Spring Boot', 'RESTful APIs'].map(skill => (
-                    <div key={skill} className="text-sm text-secondary font-mono flex items-center gap-2">
-                      <div className="w-1 h-1 bg-neutral-700 rounded-full" />
+                    <div key={skill} className="text-sm text-secondary flex items-center gap-2">
+                      <ChevronRight size={14} className="text-emerald-900" />
                       {skill}
                     </div>
                   ))}
@@ -231,10 +293,10 @@ export default function Portfolio() {
                   <Server size={16} className="text-blue-500" />
                   Infrastructure
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-3 font-mono">
                   {['ArgoCD', 'Docker', 'GitLab CI'].map(skill => (
-                    <div key={skill} className="text-sm text-secondary font-mono flex items-center gap-2">
-                      <div className="w-1 h-1 bg-neutral-700 rounded-full" />
+                    <div key={skill} className="text-sm text-secondary flex items-center gap-2">
+                      <ChevronRight size={14} className="text-blue-900" />
                       {skill}
                     </div>
                   ))}
@@ -246,10 +308,10 @@ export default function Portfolio() {
                   <CheckCircle2 size={16} className="text-orange-500" />
                   API & Testing
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-3 font-mono">
                   {['Postman', 'REST Architecture', 'OpenAPI/Swagger'].map(skill => (
-                    <div key={skill} className="text-sm text-secondary font-mono flex items-center gap-2">
-                      <div className="w-1 h-1 bg-neutral-700 rounded-full" />
+                    <div key={skill} className="text-sm text-secondary flex items-center gap-2">
+                      <ChevronRight size={14} className="text-orange-900" />
                       {skill}
                     </div>
                   ))}
@@ -258,7 +320,6 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Languages Sidebar */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-3 mb-10">
               <Globe size={21} className="text-neutral-400" />
@@ -270,8 +331,8 @@ export default function Portfolio() {
                 { name: 'Ndebele', level: 'Native' },
                 { name: 'Shona', level: 'Native' }
               ].map(lang => (
-                <div key={lang.name} className="flex justify-between items-center border-b border-border pb-2">
-                  <span className="text-sm text-white font-medium">{lang.name}</span>
+                <div key={lang.name} className="flex justify-between items-center border-b border-border pb-2 group hover:border-neutral-700 transition-colors">
+                  <span className="text-sm text-white font-medium group-hover:text-emerald-500 transition-colors">{lang.name}</span>
                   <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">{lang.level}</span>
                 </div>
               ))}
@@ -281,14 +342,14 @@ export default function Portfolio() {
       </section>
 
       {/* References Section */}
-      <section className="mb-24">
+      <section id="references" className="mb-24">
         <div className="flex items-center gap-3 mb-10">
           <Users size={21} className="text-neutral-400" />
           <h2 className="text-2xl font-semibold">References</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="border border-border p-6 rounded-xl bg-neutral-900/20">
+          <div className="border border-border p-6 rounded-xl bg-neutral-900/20 hover:border-neutral-700 transition-all duration-300">
             <h3 className="text-white font-medium mb-4">Miss T Marume</h3>
             <div className="space-y-2 text-sm text-secondary font-mono">
               <div className="flex items-center gap-2">
@@ -302,7 +363,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="border border-border p-6 rounded-xl bg-neutral-900/20">
+          <div className="border border-border p-6 rounded-xl bg-neutral-900/20 hover:border-neutral-700 transition-all duration-300">
             <h3 className="text-white font-medium mb-4">Mrs S Dube</h3>
             <div className="space-y-2 text-sm text-secondary font-mono">
               <div className="flex items-center gap-2">
@@ -320,7 +381,7 @@ export default function Portfolio() {
 
       {/* Footer */}
       <footer className="pt-20 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-neutral-600">
-        <p>© 2026 Redeem Mbonge. Built with Next.js & Lucide React.</p>
+        <p>© 2026 Mbonge Redeem. Built with Next.js & Lucide React.</p>
         <p className="flex items-center gap-2">
           <Terminal size={12} />
           <span>Last Commit: {new Date().toLocaleDateString()}</span>
