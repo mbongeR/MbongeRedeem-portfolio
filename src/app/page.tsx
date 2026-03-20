@@ -20,7 +20,8 @@ import {
   Users,
   X,
   Copy,
-  ChevronRight
+  ChevronRight,
+  BrainCircuit
 } from "lucide-react";
 
 export default function Portfolio() {
@@ -28,7 +29,6 @@ export default function Portfolio() {
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
-    // Simple visual feedback could be added here
   };
 
   return (
@@ -133,7 +133,6 @@ export default function Portfolio() {
         </div>
 
         <div className="space-y-10">
-          {/* Mpopoma High */}
           <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
             <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
             <div className="flex justify-between items-start mb-1 gap-4">
@@ -145,7 +144,6 @@ export default function Portfolio() {
             <p className="text-secondary text-sm">O Level</p>
           </div>
 
-          {/* Gifford High */}
           <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
             <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
             <div className="flex justify-between items-start mb-1 gap-4">
@@ -155,7 +153,6 @@ export default function Portfolio() {
             <p className="text-secondary text-sm">A Level</p>
           </div>
 
-          {/* NUST CCE */}
           <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
             <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
             <div className="flex justify-between items-start mb-1 gap-4">
@@ -165,7 +162,6 @@ export default function Portfolio() {
             <p className="text-secondary text-sm">Computer System Support & Digital Skills Licence</p>
           </div>
 
-          {/* NUST Degree */}
           <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-0 before:w-[1px] before:bg-border">
             <div className="absolute left-[-5px] top-2 w-[10px] h-[10px] rounded-full bg-neutral-800 border-2 border-border" />
             <div className="flex justify-between items-start mb-1 gap-4">
@@ -218,10 +214,36 @@ export default function Portfolio() {
       <section className="mb-24">
         <div className="flex items-center gap-3 mb-10">
           <Cpu size={21} className="text-neutral-400" />
-          <h2 className="text-2xl font-semibold">Selected Projects</h2>
+          <h2 className="text-2xl font-semibold">Projects</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
+          {/* AgriCredit AI Engine */}
+          <div className="group border border-border p-6 rounded-xl hover:border-neutral-700 hover:bg-neutral-900/40 transition-all duration-300 md:col-span-2">
+            <div className="flex justify-between items-start mb-4">
+              <div className="p-2 border border-border rounded-lg bg-neutral-900 text-neutral-400 group-hover:text-white transition-colors">
+                <BrainCircuit size={20} />
+              </div>
+              <a href="https://github.com/mbongeR/agri-credit-ai-engine" target="_blank">
+                <Github size={18} className="text-neutral-600 hover:text-white transition-colors" />
+              </a>
+            </div>
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+              <h3 className="text-xl font-medium text-white group-hover:underline underline-offset-4 decoration-neutral-800">AgriCredit AI Engine</h3>
+              <span className="text-[10px] font-mono text-neutral-500 border border-border px-2 py-0.5 rounded uppercase tracking-widest whitespace-nowrap">AI/ML Engineer & DevOps</span>
+            </div>
+            <p className="text-secondary text-sm mb-6 leading-relaxed max-w-3xl">
+              AI-powered agricultural lending platform providing credit scoring for smallholder farmers. Built a real-time pipeline pulling Sentinel-2 satellite crop health data (AgroMonitoring API) and weather telemetry, processed by a custom TensorFlow neural network for automated risk assessment.
+            </p>
+            <div className="flex flex-wrap gap-2 pt-2">
+              {['Python', 'FastAPI', 'TensorFlow', 'Sentinel-2', 'Docker', 'Railway'].map((tag) => (
+                <span key={tag} className="text-[10px] font-mono px-2 py-0.5 border border-border rounded text-neutral-500 bg-neutral-900/50 uppercase tracking-tighter">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
           <div className="group border border-border p-6 rounded-xl hover:border-neutral-700 hover:bg-neutral-900/40 transition-all duration-300">
             <div className="flex justify-between items-start mb-4">
               <div className="p-2 border border-border rounded-lg bg-neutral-900 text-neutral-400 group-hover:text-white transition-colors">
