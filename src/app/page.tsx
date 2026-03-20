@@ -21,7 +21,10 @@ import {
   X,
   Copy,
   ChevronRight,
-  BrainCircuit
+  BrainCircuit,
+  Linkedin,
+  Database,
+  Monitor
 } from "lucide-react";
 
 export default function Portfolio() {
@@ -92,6 +95,22 @@ export default function Portfolio() {
             <h2 className="text-2xl font-bold text-white mb-6">Contact Details</h2>
             <div className="space-y-6">
               <div className="flex flex-col gap-2">
+                <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">LinkedIn</span>
+                <div className="flex items-center justify-between bg-black/40 border border-border p-3 rounded-lg group">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <Linkedin size={16} className="text-blue-500 flex-shrink-0" />
+                    <a 
+                      href="https://www.linkedin.com/in/mbonge-redeem-b834b0268" 
+                      target="_blank" 
+                      className="text-sm text-neutral-200 font-mono truncate hover:underline"
+                    >
+                      mbonge-redeem-b834b0268
+                    </a>
+                  </div>
+                  <ExternalLink size={14} className="text-neutral-600 group-hover:text-white transition-colors" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
                 <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">Email</span>
                 <div className="flex items-center justify-between bg-black/40 border border-border p-3 rounded-lg group">
                   <span className="text-sm text-neutral-200 font-mono">redeemmbonge792@gmail.com</span>
@@ -118,14 +137,11 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
-            <p className="mt-8 text-xs text-neutral-500 font-mono text-center">
-              Available for relocation and remote work.
-            </p>
           </div>
         </div>
       )}
 
-      {/* Education Section (Ascending Order) */}
+      {/* Education Section */}
       <section className="mb-24">
         <div className="flex items-center gap-3 mb-10">
           <GraduationCap size={21} className="text-neutral-400" />
@@ -218,7 +234,6 @@ export default function Portfolio() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {/* AgriCredit AI Engine */}
           <div className="group border border-border p-6 rounded-xl hover:border-neutral-700 hover:bg-neutral-900/40 transition-all duration-300 md:col-span-2">
             <div className="flex justify-between items-start mb-4">
               <div className="p-2 border border-border rounded-lg bg-neutral-900 text-neutral-400 group-hover:text-white transition-colors">
@@ -286,7 +301,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Skills & Languages */}
+      {/* Tech Stack & Languages */}
       <section className="mb-24">
         <div className="grid md:grid-cols-4 gap-12">
           <div className="md:col-span-3">
@@ -294,7 +309,8 @@ export default function Portfolio() {
               <Code2 size={21} className="text-neutral-400" />
               <h2 className="text-2xl font-semibold">Tech Stack</h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Backend & Foundations */}
               <div>
                 <div className="flex items-center gap-2 mb-4 text-sm font-medium text-white px-2 py-1 border-l-2 border-emerald-500 bg-neutral-900/30">
                   <FileCode size={16} className="text-emerald-500" />
@@ -310,13 +326,30 @@ export default function Portfolio() {
                 </div>
               </div>
 
+              {/* Data & Storage */}
               <div>
-                <div className="flex items-center gap-2 mb-4 text-sm font-medium text-white px-2 py-1 border-l-2 border-blue-500 bg-neutral-900/30">
-                  <Server size={16} className="text-blue-500" />
-                  Infrastructure
+                <div className="flex items-center gap-2 mb-4 text-sm font-medium text-white px-2 py-1 border-l-2 border-purple-500 bg-neutral-900/30">
+                  <Database size={16} className="text-purple-500" />
+                  Data & Storage
                 </div>
                 <div className="space-y-3 font-mono">
-                  {['ArgoCD', 'Docker', 'GitLab CI'].map(skill => (
+                  {['PostgreSQL', 'MS SQL Server', 'DBeaver'].map(skill => (
+                    <div key={skill} className="text-sm text-secondary flex items-center gap-2">
+                      <ChevronRight size={14} className="text-purple-900" />
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Infrastructure & Deployment */}
+              <div>
+                <div className="flex items-center gap-2 mb-4 text-sm font-medium text-white px-2 py-1 border-l-2 border-blue-500 bg-neutral-900/30">
+                  <Cloud size={16} className="text-blue-500" />
+                  Infrastructure & Cloud
+                </div>
+                <div className="space-y-3 font-mono">
+                  {['Docker', 'ArgoCD', 'Azure', 'Hetzner', 'On-Prem'].map(skill => (
                     <div key={skill} className="text-sm text-secondary flex items-center gap-2">
                       <ChevronRight size={14} className="text-blue-900" />
                       {skill}
@@ -325,13 +358,30 @@ export default function Portfolio() {
                 </div>
               </div>
 
+              {/* Platforms & OS */}
+              <div>
+                <div className="flex items-center gap-2 mb-4 text-sm font-medium text-white px-2 py-1 border-l-2 border-neutral-500 bg-neutral-900/30">
+                  <Monitor size={16} className="text-neutral-400" />
+                  Platforms & OS
+                </div>
+                <div className="space-y-3 font-mono">
+                  {['Ubuntu (Linux)', 'Windows'].map(skill => (
+                    <div key={skill} className="text-sm text-secondary flex items-center gap-2">
+                      <ChevronRight size={14} className="text-neutral-800" />
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* API & Testing */}
               <div>
                 <div className="flex items-center gap-2 mb-4 text-sm font-medium text-white px-2 py-1 border-l-2 border-orange-500 bg-neutral-900/30">
                   <CheckCircle2 size={16} className="text-orange-500" />
                   API & Testing
                 </div>
                 <div className="space-y-3 font-mono">
-                  {['Postman', 'REST Architecture', 'OpenAPI/Swagger'].map(skill => (
+                  {['Postman', 'REST Arch.', 'OpenAPI'].map(skill => (
                     <div key={skill} className="text-sm text-secondary flex items-center gap-2">
                       <ChevronRight size={14} className="text-orange-900" />
                       {skill}
