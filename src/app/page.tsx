@@ -90,6 +90,7 @@ export default function Portfolio() {
         </button>
         <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
           <a href="#work" onClick={() => setMenuOpen(false)}>Work</a>
+          <a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a>
           <a href="#approach" onClick={() => setMenuOpen(false)}>Approach</a>
           <a href="#stack" onClick={() => setMenuOpen(false)}>Stack</a>
           <a href="#contact" onClick={() => setMenuOpen(false)} className="nav-cta">Let&apos;s talk <ArrowUpRight size={14} /></a>
@@ -156,6 +157,20 @@ export default function Portfolio() {
         <a href="https://github.com/mbongeR?tab=repositories" target="_blank" rel="noreferrer" className="text-link">Explore all repositories <ArrowUpRight size={15} /></a>
       </section>
 
+      <section id="experience" className="section experience-section page-width">
+        <div className="section-heading"><div><p className="kicker">Experience</p><h2>Recent work,<br /><span>real systems.</span></h2></div><p>Two internships gave me experience across fintech infrastructure and agentic AI— from Java services and deployment pipelines to streaming multi-agent backends.</p></div>
+        <div className="experience-list">
+          <article className="experience-item">
+            <div className="experience-date">May 2026 — Oct 2026<br /><span>6 months · Remote</span></div>
+            <div className="experience-content"><p className="project-eyebrow">Backend Developer Intern</p><h3>RWA Inc.</h3><p className="company">RWA ecosystem</p><ul><li><CheckCircle2 size={15} />Engineered the core multi-agent backend engine for Project ENTER using FastAPI, LangGraph, and CrewAI.</li><li><CheckCircle2 size={15} />Built real-time Server-Sent Events (SSE) streaming for agent workflows.</li><li><CheckCircle2 size={15} />Implemented secure state checkpointing, isolated cloud sandbox file assembly, and API rate-limiting rules.</li><li><CheckCircle2 size={15} />Deployed the backend engine on AWS.</li></ul><div className="tag-row"><span>FastAPI</span><span>LangGraph</span><span>CrewAI</span><span>AWS</span><span>SSE</span></div></div>
+          </article>
+          <article className="experience-item">
+            <div className="experience-date">Aug 2025 — Jun 2026<br /><span>11 months · Remote</span></div>
+            <div className="experience-content"><p className="project-eyebrow">Backend Developer Intern</p><h3>KaribuTech AI</h3><p className="company">Generative AI · Kubernetes · Fintech</p><ul><li><CheckCircle2 size={15} />Designed, developed, and maintained highly available REST APIs using Spring Boot and Java.</li><li><CheckCircle2 size={15} />Supported core fintech platform functionality and multiple concurrent client integrations.</li><li><CheckCircle2 size={15} />Worked with PostgreSQL schemas, Docker, GitLab CI, ArgoCD, and Kubernetes delivery workflows.</li><li><CheckCircle2 size={15} />Explored ETL pipeline concepts with Apache Airflow and Prefect.</li></ul><div className="tag-row"><span>Java</span><span>Spring Boot</span><span>PostgreSQL</span><span>Kubernetes</span><span>ArgoCD</span></div></div>
+          </article>
+        </div>
+      </section>
+
       <section id="approach" className="section section-dark">
         <div className="page-width">
           <div className="section-heading"><div><p className="kicker">How I work</p><h2>Less theatre.<br /><span>More signal.</span></h2></div><p>My edge is not knowing every tool. It is making the important parts of a system visible, testable, and maintainable.</p></div>
@@ -170,7 +185,7 @@ export default function Portfolio() {
         <div className="stack-grid">
           <div className="stack-group"><Database size={19} /><h3>Backend &amp; data</h3><p>Java · Spring Boot · REST APIs<br />PostgreSQL · MS SQL Server · Flyway</p></div>
           <div className="stack-group"><Layers3 size={19} /><h3>Delivery &amp; runtime</h3><p>Docker · GitLab CI · ArgoCD<br />Azure · Hetzner · Linux</p></div>
-          <div className="stack-group"><Code2 size={19} /><h3>Adjacent tools</h3><p>Python · Prefect · TensorFlow<br />Postman · OpenAPI · Git</p></div>
+          <div className="stack-group"><Code2 size={19} /><h3>AI &amp; data systems</h3><p>Python · FastAPI · LangGraph · CrewAI<br />Prefect · Airflow · TensorFlow</p></div>
         </div>
       </section>
 
