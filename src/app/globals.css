@@ -104,11 +104,35 @@ h2 { font-size: clamp(36px, 4vw, 53px); letter-spacing: -.065em; line-height: .9
 .contact-section .kicker { color: #46621d; }
 .contact-section h2 em { font-style: normal; color: #46621d; }
 .contact-copy { color: #334321; line-height: 1.7; max-width: 420px; margin-bottom: 25px; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .contact-section .button-primary { background: #11150d; color: var(--lime); }
 .contact-section .button-primary:hover { background: #27321b; }
+.button-contact-secondary { border: 1px solid #718c3e; color: #263514; }
+.button-contact-secondary:hover { border-color: #11150d; }
 .footer { min-height: 86px; display: flex; justify-content: space-between; align-items: center; color: var(--faint); font: 11px var(--font-mono); }
 .footer div { display: flex; gap: 21px; align-items: center; }
 .footer a, .footer span { display: flex; align-items: center; gap: 6px; }
+.theme-toggle { position: fixed; z-index: 5; right: 24px; bottom: 24px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--foreground); background: var(--surface); box-shadow: 0 8px 24px #00000030; cursor: pointer; transition: background .3s, color .3s, border-color .3s, transform .2s; }
+.theme-toggle:hover { color: var(--lime); border-color: var(--lime); transform: translateY(-2px); }
+
+[data-theme="light"] {
+  --background: #f3f5ed;
+  --surface: #ffffff;
+  --surface-2: #e9eee2;
+  --foreground: #172016;
+  --muted: #596456;
+  --faint: #7a8578;
+  --line: #d3dbcd;
+  --lime: #719f21;
+  --orange: #bc5b2c;
+}
+[data-theme="light"] .terminal-card { box-shadow: 18px 18px 0 #dce5d2; }
+[data-theme="light"] .terminal-value { color: #33452e; }
+[data-theme="light"] .terminal-bar span { background: #c4cfbd; }
+[data-theme="light"] .section-dark { background: #e8eee1; }
+[data-theme="light"] .button-primary { color: #f7faf1; }
+[data-theme="light"] .contact-section .button-primary { color: var(--lime); }
+[data-theme="light"] .button-contact-secondary { color: #334c1b; border-color: #9ab56c; }
 
 @media (max-width: 760px) {
   .page-width, .nav-shell { width: min(100% - 34px, 1120px); }
@@ -135,4 +159,5 @@ h2 { font-size: clamp(36px, 4vw, 53px); letter-spacing: -.065em; line-height: .9
   .contact-inner { gap: 35px; }
   .footer { padding: 25px 0; align-items: flex-start; flex-direction: column; gap: 17px; }
   .footer div { flex-wrap: wrap; }
+  .theme-toggle { right: 17px; bottom: 17px; }
 }

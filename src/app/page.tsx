@@ -8,16 +8,19 @@ import {
   Code2,
   Database,
   Github,
+  Linkedin,
   Layers3,
   Mail,
   MapPin,
   Menu,
+  Moon,
   Radio,
   Server,
+  Sun,
   Terminal,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const projects = [
   {
@@ -58,6 +61,22 @@ const principles = [
 
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLight, setIsLight] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("portfolio-theme");
+    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+    const light = savedTheme ? savedTheme === "light" : prefersLight;
+    setIsLight(light);
+    document.documentElement.dataset.theme = light ? "light" : "dark";
+  }, []);
+
+  const toggleTheme = () => {
+    const nextIsLight = !isLight;
+    setIsLight(nextIsLight);
+    document.documentElement.dataset.theme = nextIsLight ? "light" : "dark";
+    window.localStorage.setItem("portfolio-theme", nextIsLight ? "light" : "dark");
+  };
 
   return (
     <main>
@@ -89,6 +108,7 @@ export default function Portfolio() {
           <div className="hero-actions">
             <a href="#work" className="button button-primary">See selected work <ArrowUpRight size={16} /></a>
             <a href="https://github.com/mbongeR" target="_blank" rel="noreferrer" className="button button-quiet"><Github size={16} /> GitHub profile</a>
+            <a href="https://www.linkedin.com/in/mbonge-redeem-b834b0268/" target="_blank" rel="noreferrer" className="button button-quiet"><Linkedin size={16} /> LinkedIn</a>
           </div>
         </div>
         <div className="terminal-card" aria-label="Current focus">
@@ -106,7 +126,9 @@ export default function Portfolio() {
       </section>
 
       <div className="proof-strip">
-        <div><strong>7</strong><span>public repositories</span></div>
+        <div><strong>22</strong><span>total repositories</span></div>
+        <div><strong>14</strong><span>private repositories</span></div>
+        <div><strong>8</strong><span>public repositories</span></div>
         <div><strong>Java</strong><span>primary backend craft</span></div>
         <div><strong>GitOps</strong><span>delivery mindset</span></div>
         <div><strong>NUST</strong><span>informatics &amp; analytics</span></div>
@@ -158,10 +180,13 @@ export default function Portfolio() {
       </section>
 
       <section id="contact" className="contact-section">
-        <div className="page-width contact-inner"><div><p className="kicker">Have a real problem?</p><h2>Let&apos;s build something<br /><em>worth maintaining.</em></h2></div><div><p className="contact-copy">If you are building a backend product, improving a delivery pipeline, or looking for an engineer who cares about the operational details, I&apos;d like to hear about it.</p><a href="mailto:redeemmbonge792@gmail.com" className="button button-primary">Start a conversation <Mail size={16} /></a></div></div>
+        <div className="page-width contact-inner"><div><p className="kicker">Have a real problem?</p><h2>Let&apos;s build something<br /><em>worth maintaining.</em></h2></div><div><p className="contact-copy">If you are building a backend product, improving a delivery pipeline, or looking for an engineer who cares about the operational details, I&apos;d like to hear about it.</p><div className="contact-actions"><a href="mailto:redeemmbonge792@gmail.com" className="button button-primary">Email me <Mail size={16} /></a><a href="https://www.linkedin.com/in/mbonge-redeem-b834b0268/" target="_blank" rel="noreferrer" className="button button-contact-secondary"><Linkedin size={16} /> Connect on LinkedIn</a></div></div></div>
       </section>
 
-      <footer className="footer page-width"><p>© 2026 Mbonge Redeem</p><div><a href="https://github.com/mbongeR" target="_blank" rel="noreferrer"><Github size={15} /> GitHub</a><a href="mailto:redeemmbonge792@gmail.com"><Mail size={15} /> Email</a><span><MapPin size={14} /> Bulawayo, Zimbabwe</span></div></footer>
+      <footer className="footer page-width"><p>© 2026 Mbonge Redeem</p><div><a href="https://github.com/mbongeR" target="_blank" rel="noreferrer"><Github size={15} /> GitHub</a><a href="https://www.linkedin.com/in/mbonge-redeem-b834b0268/" target="_blank" rel="noreferrer"><Linkedin size={15} /> LinkedIn</a><a href="mailto:redeemmbonge792@gmail.com"><Mail size={15} /> Email</a><span><MapPin size={14} /> Bulawayo, Zimbabwe</span></div></footer>
+      <button className="theme-toggle" onClick={toggleTheme} aria-label={`Switch to ${isLight ? "dark" : "light"} mode`} title={`Switch to ${isLight ? "dark" : "light"} mode`}>
+        {isLight ? <Moon size={17} /> : <Sun size={17} />}
+      </button>
     </main>
   );
 }
