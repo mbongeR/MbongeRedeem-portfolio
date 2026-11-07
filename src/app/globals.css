@@ -142,6 +142,7 @@ h2 { font-size: clamp(36px, 4vw, 53px); letter-spacing: -.065em; line-height: .9
 [data-theme="light"] .terminal-value { color: #33452e; }
 [data-theme="light"] .terminal-bar span { background: #c4cfbd; }
 [data-theme="light"] .section-dark { background: #e8eee1; }
+[data-theme="light"] .project-featured { background: var(--surface); }
 [data-theme="light"] .button-primary { color: #f7faf1; }
 [data-theme="light"] .contact-section .button-primary { color: var(--lime); }
 [data-theme="light"] .button-contact-secondary { color: #334c1b; border-color: #9ab56c; }
