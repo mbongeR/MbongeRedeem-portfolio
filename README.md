@@ -1,32 +1,34 @@
-# Professional Backend Portfolio Template
+# Mbonge Redeem — Backend Engineer Portfolio
 
-This is a clean, minimalist, and highly professional portfolio template built with Next.js and Tailwind CSS. It is specifically designed for Backend Engineers to highlight technical maturity, system architecture, and infrastructure skills.
+The portfolio for Mbonge Redeem, a Zimbabwe-based backend engineer focused on Java, Spring Boot, reliable APIs, and the delivery paths behind working products.
 
-## Tech Stack
+The site is intentionally proof-led: selected projects link directly to the public repositories that support the story, including:
 
-- **Next.js 14** (App Router)
-- **Tailwind CSS** (Dark mode first)
-- **Lucide React** (Minimalist iconography)
-- **JetBrains Mono** (Engineering-focused typography)
+- **Smart Portfolio Maker** — a self-hosted GitHub-aware portfolio system.
+- **Spring Boot Production Boilerplate** — Java 21, Spring Boot 3, Flyway, Docker, and PostgreSQL foundations.
+- **Live Crypto Market Tracker** — a Prefect-orchestrated Python pipeline with failure alerting.
 
-## Getting Started
+## Stack
 
-1. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+- Next.js 14 App Router
+- React 18
+- TypeScript
+- Tailwind CSS
+- Lucide React
 
-2. **Run the Development Server**:
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) to see the result.
+## Local development
 
-3. **Customize Content**:
-   Edit `src/app/page.tsx` to update your experience, projects, and skills.
+```bash
+npm install
+npm run dev
+```
 
-## Deployment
+Open [http://localhost:3000](http://localhost:3000).
 
-The easiest way to deploy this portfolio is to use the [Vercel Platform](https://vercel.com/new).
+## Production verification
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+npm run build
+```
+
+The portfolio is deployed on [Vercel](https://mbonge-redeem-portfolio.vercel.app) and the source projects are available on [GitHub](https://github.com/mbongeR).

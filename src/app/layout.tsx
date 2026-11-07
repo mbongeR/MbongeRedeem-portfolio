@@ -13,8 +13,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Backend Engineer | Infrastructure & APIs",
-  description: "Portfolio of a Backend Engineer specializing in scalable systems and infrastructure.",
+  title: "Mbonge Redeem | Backend Engineer",
+  description: "Mbonge Redeem builds backend systems, reliable APIs, and the delivery paths behind working products.",
 };
 
 export default function RootLayout({
